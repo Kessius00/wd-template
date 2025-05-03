@@ -11,9 +11,9 @@ module.exports = merge(common, {
     static: "./dist",
     open: true, // Opens browser on start
     hot: true, // Enables HMR (Hot Module Replacement)
+    // liveReload: true,
     port: 3000,
   },
-
   module: {
     rules: [
         {

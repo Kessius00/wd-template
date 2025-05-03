@@ -2,6 +2,7 @@ const path = require("path");
 const common = require("./webpack.common");
 const {merge} = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 
 module.exports = merge(common, {
@@ -20,7 +21,7 @@ module.exports = merge(common, {
       {
         //SASS & CSS
         test: /\.s?css$/i,
-        use: ["style-loader",  // You could swap for MiniCssExtractPlugin for better performance
+        use: [MiniCssExtractPlugin.loader, // Replaces 'style-loader'
         "css-loader",         //2. turns CSS into CommonJS
         "sass-loader"    ,     //1. turns SASS into CSS
         ],
@@ -38,5 +39,9 @@ module.exports = merge(common, {
         removeComments: true
       }
     }),
+    new MiniCssExtractPlugin({      //extracts CSS into separate files
+      filename: '[name].[contenthash].css',
+    }),
   ],
+
 });

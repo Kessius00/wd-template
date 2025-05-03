@@ -1,7 +1,6 @@
 const path = require("path");
 const common = require("./webpack.common");
 const {merge} = require("webpack-merge");
-
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
@@ -18,22 +17,14 @@ module.exports = merge(common, {
   module: {
     rules: [
 
-        {
-        //CSS
-        test: /\.css$/i,
-        use: ["style-loeader", 
-        "css-loader"
-        ]
-        },
-
-        {
-        //SASS
-        test: /\.scss$/i,
-        use: ["style-loader",                   //3. Extract CSS into files
-        "css-loader",                           //2. turns CSS into CommonJS
-        "sass-loader"                           //1. turns SASS into CSS
-        ]
-        },
+      {
+        //SASS & CSS
+        test: /\.s?css$/i,
+        use: ["style-loader",  // You could swap for MiniCssExtractPlugin for better performance
+        "css-loader",         //2. turns CSS into CommonJS
+        "sass-loader"    ,     //1. turns SASS into CSS
+        ],
+      },
 
     ]
   },

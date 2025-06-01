@@ -34,7 +34,7 @@ export default [
 
   // Node.js scripts like webpack configs
   {
-      files: ['webpack.*.[cm]?js'],
+      files: ['webpack*.js', 'webpack*.cjs', 'webpack*.mjs'],
       languageOptions: {
           ecmaVersion: 2022,
           sourceType: 'commonjs',
